@@ -6,9 +6,11 @@ Usage:
     python -m evals.pipeline
 """
 import json
+import sys
 from pathlib import Path
 
 from app.agents.graph import run_query
+from app.logging_config import setup_logging
 from evals.metrics import intent_correct, source_grounded, mentions_required_terms
 from evals.guardrails_eval import run_guardrail_probes
 
@@ -57,7 +59,9 @@ def run(machine_model: str = "Apex-3200") -> dict:
 
 
 if __name__ == "__main__":
+    setup_logging()
     summary = run()
     print(json.dumps(summary, indent=2))
     print()
     print(f"RELEASE GATE: {'PASS' if summary['release_gate_pass'] else 'FAIL'}")
+    sys.exit(0 if summary["release_gate_pass"] else 1)
