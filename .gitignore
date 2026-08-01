@@ -6,3 +6,4 @@ processed_data/*.pkl
 processed_data/*_chunks.json
 *.log
 .streamlit/
+.pytest_cache/

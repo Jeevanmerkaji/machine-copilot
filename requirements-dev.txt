@@ -1,0 +1,4 @@
+# Dev/test-only tooling on top of the app's runtime dependencies.
+-r requirements.txt
+pytest>=8.3,<9
+httpx>=0.28,<0.29

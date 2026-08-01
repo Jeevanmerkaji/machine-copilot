@@ -3,6 +3,11 @@ machine controller. Large tap targets, minimal typing, big text.
 
 Run with: streamlit run ui/hmi_chat.py
 """
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import streamlit as st
 from app.agents.graph import run_query
 from app.config import settings
